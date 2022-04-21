@@ -1,0 +1,139 @@
+<form [formGroup]="formOciDetalle" (submit)="guardar">
+    <!-- <div class="col-12 d-flex flex-row-reverse"> -->
+    <div class="card">
+        <div class="card-body row">
+            <div class="col-4 my-1">
+                <button *ngIf="crearDetalle" class="btn btn-success" id="Guardar"
+                    (click)="mostrarOciDetalle()">&nbsp;Crear</button>
+                <button *ngIf="!crearDetalle" class="btn btn-warning" id="Cancelar"
+                    (click)="mostrarOciDetalle()">Cancelar</button>
+            </div>
+            <div class="col-8 my-1 d-flex flex-row-reverse" *ngIf="!crearDetalle">
+                <button class="btn btn-success ml-1" id="Guardar" (click)="guardar()">Guardar</button>
+                <button class="btn btn-primary ml-1" id="Limpiar" (click)="limpiarFormulario()">Limpiar</button>
+            </div>
+            <div class="col-12" *ngIf="!crearDetalle">
+                <div class="row">
+
+
+                    <div class="col-12 my-1">
+                        <h5 class="card-title">Detalle </h5>
+                    </div>
+                    <div class="col-3 form-group ">
+                        <div class="input-group ">
+                            <div class="input-group-prepend w-25"><span
+                                    class="input-group-text w-100 justify-content-center">Prenda</span>
+                            </div>
+                            <ng-select class="prepend-select w-75 " [(ngModel)]="prendaDetalleSelect"
+                                bindLabel="descripcion" [items]="prendaDetalle" bindValue="id"
+                                placeholder="Seleccione..." formControlName="prenda"
+                                addTagText="Crear Prenda" 
+                                [addTag]="addPrenda">
+                            </ng-select>
+                        </div>
+                    </div>
+                    <div class="col-3 form-group ">
+                        <div class="input-group ">
+                            <div class="input-group-prepend w-25"><span
+                                    class="input-group-text w-100 justify-content-center">Cantidad</span>
+                            </div>
+                            <input class="form-control" placeholder="123" type="number" formControlName="cantidad">
+                        </div>
+                    </div>
+                    <div class="col-3 form-group ">
+                        <div class="input-group ">
+                            <div class="input-group-prepend w-25"><span
+                                    class="input-group-text w-100 justify-content-center">Color</span>
+                            </div>
+                            <input class="form-control" placeholder="Negro" type="text" formControlName="color">
+                        </div>
+                    </div>
+                    <div class="col-3 form-group ">
+                        <div class="input-group ">
+                            <div class="input-group-prepend w-25"><span
+                                    class="input-group-text w-100 justify-content-center">Estado</span>
+                            </div>
+                            <ng-select class="prepend-select w-75 " [(ngModel)]="ociDetalleEstadoSelect"
+                                bindLabel="text" [items]="ociDetalleEstado" bindValue="id" placeholder="Seleccione..."
+                                formControlName="estado">
+                            </ng-select>
+                        </div>
+                    </div>
+                    <div class="col-3 form-group ">
+                        <div class="input-group ">
+                            <div class="input-group-prepend w-25"><span
+                                    class="input-group-text w-100 justify-content-center">Produccion</span>
+                            </div>
+                            <ng-select class="prepend-select w-75 " [(ngModel)]="produccionDetalleSelect"
+                                bindLabel="descripcion" [items]="produccionDetalle" bindValue="id"
+                                placeholder="Seleccione..." formControlName="produccion">
+                            </ng-select>
+                        </div>
+                    </div>
+                    <div class="col-3 form-group ">
+                        <div class="input-group">
+                            <div class="input-group-prepend w-25"><span
+                                    class="input-group-text w-100 justify-content-center">Fecha</span>
+                            </div>
+                            <input ngbDatepicker class="form-control" placeholder="Desde" name="dp"
+                                formControlName="fechaInicio" type="date">
+                        </div>
+                    </div>
+                    <div class="col-3 form-group ">
+                        <div class="input-group">
+                            <div class="input-group-prepend w-25"><span
+                                    class="input-group-text w-100 justify-content-center">Tela</span>
+                            </div>
+                            <ng-select class="prepend-select w-75 " [(ngModel)]="telaSelect" bindLabel="nombre"
+                                [items]="telaDetalle" bindValue="id" placeholder="Seleccione..." formControlName="tela">
+                            </ng-select>
+                        </div>
+                    </div>
+                    <div class="col-3 form-group ">
+                        <div class="input-group">
+                            <div class="input-group-prepend w-25"><span
+                                    class="input-group-text w-100 justify-content-center">Cambio
+                                    Tela</span>
+                            </div>
+                            <ng-select class="prepend-select w-75 " [(ngModel)]="cambioTelaSelect" bindLabel="text"
+                                [items]="siNo" bindValue="id" placeholder="Seleccione..." formControlName="cambioTela">
+                            </ng-select>
+                        </div>
+                    </div>
+                    <div class="col-3 form-group ">
+                        <div class="input-group">
+                            <div class="input-group-prepend w-25"><span
+                                    class="input-group-text w-100 justify-content-center">Talla</span>
+                            </div>
+                            <ng-select class="prepend-select w-75 " [(ngModel)]="tallaSelect" bindLabel="text"
+                                [items]="tallaObj" bindValue="id" placeholder="Seleccione..." formControlName="talla">
+                            </ng-select>
+                        </div>
+                    </div>
+                    <div class="col-3 form-group ">
+                        <div class="input-group">
+                            <div class="input-group-prepend w-25"><span
+                                    class="input-group-text w-100 justify-content-center">Posee
+                                    Tela</span>
+                            </div>
+                            <ng-select class="prepend-select w-75 " [(ngModel)]="poseeTelaSelect" bindLabel="text"
+                                [items]="siNo" bindValue="id" placeholder="Seleccione..." formControlName="poseeTela">
+                            </ng-select>
+                        </div>
+                    </div>
+                    <div class="col-6 form-group ">
+                        <div class="input-group ">
+                            <div class="input-group-prepend w-25"><span
+                                    class="input-group-text w-100 justify-content-center">Comentario</span>
+                            </div>
+                            <input class="form-control" placeholder="Comentario" type="text"
+                                formControlName="comentario">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</form> 1

@@ -1,0 +1,51 @@
+<button  [routerLink]="['/oci', 'formulario']" >ASD</button>
+<table aria-hidden="true"
+  class="text-center table border mt-3">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Vendedor</th>
+      <th>Cliente</th>
+      <th>Estado</th>
+      <th>prioridad</th>
+      <th>Detalles</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of listaOci">
+      <td>{{item.oci}}</td>
+      <td>{{item.vendedor?.nombre}}</td>
+      <td>{{item.cliente?.razonSocial}}</td>
+      <td>{{item.estado}}</td>
+      <td>{{item.prioridad}}</td>
+      <td><button (click)="mostrarDetalle(item)"> Ver</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Servicios De Bombeo # {{ociId}} </h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="d-flex flex-wrap pt-3">
+
+      <div class="col-12">
+        <!-- <app-detalle-compra [listaDetalle]="listaOciDetalle" ></app-detalle-compra> -->
+        <!-- <app-detalle-compra></app-detalle-compra> -->
+        
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button (click)="modal.dismiss('Cross click')" type="button" class="btn btn-danger text-uppercase">Cerrar</button>
+  </div>
+
+  <!-- <div class="modal-footer"> -->
+  <!-- <button type="submit" class="btn btn-primary text-uppercase">Guardar</button> -->
+  <!-- </div> -->
+
+</ng-template>
